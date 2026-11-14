@@ -9,8 +9,8 @@ import si.fri.rso.auctions.catalog.persistence.CategoryRepository;
 import si.fri.rso.auctions.catalog.service.CategoryService;
 
 /**
- * Default implementation of {@link CategoryService}. Transactional, so it also works when called outside a REST
- * request (NATS consumers, gRPC).
+ * Default implementation of {@link CategoryService}. Transactional, so it does not rely on a REST request for its
+ * session. Callers outside an HTTP request must set the tenant with {@code TenantScope}.
  */
 @ApplicationScoped
 @Transactional
