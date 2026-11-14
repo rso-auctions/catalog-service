@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="20261112-1" author="rso-auctions">
+        <createTable tableName="categories">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="code" type="varchar(64)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="uk_categories_code"/>
+            </column>
+            <column name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(512)"/>
+            <column name="created_at" type="timestamp with time zone">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp with time zone">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20261112-2" author="rso-auctions">
+        <comment>Initial categories with fixed ids, identical in every environment</comment>
+        <insert tableName="categories">
+            <column name="id" value="8e3d4f50-483a-44d5-8b21-dab0b533e64b"/>
+            <column name="code" value="VEHICLES"/>
+            <column name="name" value="Vozila"/>
+            <column name="description" value="Avtomobili, motorji in druga vozila"/>
+            <column name="created_at" valueComputed="now()"/>
+            <column name="updated_at" valueComputed="now()"/>
+            <column name="version" valueNumeric="0"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="id" value="2ad595c4-ae08-4973-be76-cf80f016e986"/>
+            <column name="code" value="ELECTRONICS"/>
+            <column name="name" value="Elektronika"/>
+            <column name="description" value="Računalniki, telefoni in druge naprave"/>
+            <column name="created_at" valueComputed="now()"/>
+            <column name="updated_at" valueComputed="now()"/>
+            <column name="version" valueNumeric="0"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="id" value="777daa66-9077-4543-9d4a-06bca2eccd3e"/>
+            <column name="code" value="COLLECTIBLES"/>
+            <column name="name" value="Zbirateljstvo"/>
+            <column name="description" value="Kovanci, znamke, umetnine in starine"/>
+            <column name="created_at" valueComputed="now()"/>
+            <column name="updated_at" valueComputed="now()"/>
+            <column name="version" valueNumeric="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
