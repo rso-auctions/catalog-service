@@ -1,5 +1,8 @@
 # catalog-service
 
+[![CI main](https://github.com/rso-auctions/catalog-service/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rso-auctions/catalog-service/actions/workflows/ci.yml?query=branch%3Amain)
+[![CI dev](https://github.com/rso-auctions/catalog-service/actions/workflows/ci.yml/badge.svg?branch=dev)](https://github.com/rso-auctions/catalog-service/actions/workflows/ci.yml?query=branch%3Adev)
+
 Microservice of the [RSO Auctions](https://github.com/rso-auctions) platform. It owns items, categories,
 photos and listing moderation. Other services reach it via REST and GraphQL (frontend), gRPC (auction-service)
 and NATS JetStream events.
@@ -66,6 +69,9 @@ startup. Until every pod has restarted, old pods answer `TENANT_UNKNOWN` for the
 ```shell
 ./mvnw verify
 ```
+
+GitHub Actions ([`ci.yml`](.github/workflows/ci.yml)) runs the same `verify` on every push to `dev` and `main`
+and on pull requests into `dev` and `main`; it can also be started by hand.
 
 Container image (JVM):
 
